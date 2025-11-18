@@ -242,7 +242,7 @@ static void lightbulb_thread_entry(void *p)
     /* Create accessory object */
     accessory = hap_acc_create(&bridge_cfg_dimmer);
 
-    /* Create the Fan Service. Include the "name" since this is a user visible service  */
+    /* Create the Dimmer Service. Include the "name" since this is a user visible service  */
     service = hap_serv_lightbulb_create(true);
 
     /* Add the optional characteristic to the Light Bulb Service */
@@ -265,7 +265,7 @@ static void lightbulb_thread_entry(void *p)
     /* Set the write callback for the service */
     hap_serv_set_write_cb(service, lightbulb_write);
 
-    /* Add the Fan Service to the Accessory Object */
+    /* Add the Dimmer Service to the Accessory Object */
     hap_acc_add_serv(accessory, service);
 
     /* Add the Accessory to the HomeKit Database */
@@ -294,13 +294,13 @@ static void lightbulb_thread_entry(void *p)
     /* Get pointer to the outlet in use characteristic which we need to monitor for state changes */
     button0_state = hap_serv_get_char_by_uuid(service, HAP_CHAR_UUID_PROGRAMMABLE_SWITCH_EVENT);
 
-    /* Add the Fan Service to the Accessory Object */
+    /* Add the button Service to the Accessory Object */
     hap_acc_add_serv(accessory, service);
 
     /* Add the Accessory to the HomeKit Database */
     hap_add_bridged_accessory(accessory, hap_get_unique_aid("Button0"));
 
-    // Button 0 config
+    // Button 1 config
     hap_acc_cfg_t bridge_cfg_button1 = {
         .name = "Button1",
         .manufacturer = "Espressif",
@@ -323,7 +323,7 @@ static void lightbulb_thread_entry(void *p)
     /* Get pointer to the outlet in use characteristic which we need to monitor for state changes */
     button1_state = hap_serv_get_char_by_uuid(service, HAP_CHAR_UUID_PROGRAMMABLE_SWITCH_EVENT);
 
-    /* Add the Fan Service to the Accessory Object */
+    /* Add the Button Service to the Accessory Object */
     hap_acc_add_serv(accessory, service);
 
     /* Add the Accessory to the HomeKit Database */
