@@ -375,11 +375,15 @@ static void lightbulb_thread_entry(void *p)
 
 static void handle_incoming_message(const char *data, int len)
 {
-    hap_val_t val_on;
-    hap_val_t val_brightness;
-
+    // Initialize HAP values
+    hap_val_t val_on = {
+        .b = false
+    };
+    hap_val_t val_brightness = {
+        .i = 0
+    };
     hap_val_t val_button = {
-        .i = 0,
+        .i = 0
     };
 
     cJSON *root = cJSON_ParseWithLength(data, len);
