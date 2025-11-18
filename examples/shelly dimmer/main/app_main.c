@@ -478,7 +478,6 @@ static void handle_incoming_message(const char *data, int len)
                                 {
                                     hap_char_update_val(button1_state, &val_button);
                                 }
-                                
                             }
                             else if (strcmp(event_value, "single_push") == 0)
                             {
